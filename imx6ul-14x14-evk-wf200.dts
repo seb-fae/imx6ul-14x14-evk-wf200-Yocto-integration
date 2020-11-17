@@ -1,0 +1,85 @@
+/*
+ * Copyright (C) 2018 NXP
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ */
+
+/*
+ * DTS file for ECSPI Certification at i.mx6ul 14x14 evk board.
+ * NOTE: Because Ethernet2 use the same pins with ecspi4, so disable
+ *       fec1/fec2 for ECSPI4 test.
+ */
+
+#include "imx6ul-14x14-evk.dts"
+
+&iomuxc {
+	pinctrl_ecspi4: ecspi4grp {
+		fsl,pins = <
+			MX6UL_PAD_ENET2_TX_DATA1__ECSPI4_SCLK	0x70a1
+			MX6UL_PAD_ENET2_TX_EN__ECSPI4_MOSI	0x70a1
+			MX6UL_PAD_ENET2_TX_CLK__ECSPI4_MISO	0x70a1
+		>;
+	};
+
+	pinctrl_spi_cs0: cs0grp {
+		fsl,pins = <
+                        MX6UL_PAD_GPIO1_IO02__GPIO1_IO02        0x70a1
+		>;
+	};
+ 
+        wfx_irq: irqgrp {
+               fsl,pins = <
+                        MX6UL_PAD_GPIO1_IO04__GPIO1_IO04        0x110B0
+                >;
+        };
+
+        wfx_gpios: gpiogrp {
+                fsl,pins = <
+                        MX6UL_PAD_GPIO1_IO00__GPIO1_IO00        0x70a1
+                >;
+        };
+};
+
+&ecspi4 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+        fsl,spi-num-chipselects = <1>;
+        cs-gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_ecspi4 &pinctrl_spi_cs0>;
+	status = "okay";
+
+
+	wfx {
+                compatible = "silabs,wfx-spi";
+                pinctrl-names = "default";
+                pinctrl-0 = <&wfx_irq &wfx_gpios>;
+                interrupts-extended = <&gpio1 4 IRQ_TYPE_EDGE_RISING>;
+                reset-gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
+                reg = <0>;
+                spi-max-frequency = <8000000>;
+        };
+};
+
+
+&fec1 {
+	status = "disabled";
+};
+
+&fec2 {
+	status = "disabled";
+};
+
+&usbotg1 {
+        status = "disabled";
+};
+&usbotg2 {
+        status = "disabled";
+
+};
+&tsc {
+        status = "disabled";
+
+};
