@@ -6,3 +6,4 @@ imx-yocto-bsp/build-x11/tmp/work-shared/imx6ulevk/kernel-source/arch/arm/boot/dt
 
 The "Makefile" located in same directory should be modified to take into account this new DTS file.
 
+All the receipe for intergration are provided in this repository.
