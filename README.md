@@ -1,4 +1,4 @@
-# imx6ul-14x14-evk-wf200-Yocto-integration
+# Yocto Integration
 
 A device tree file integrating wf200 (SPI) on IMX EVK platform is provided as "**imx6ul-14x14-evk-wf200.dts**".
 
@@ -20,6 +20,7 @@ modprobe wfx
  
 ## To connect to an AP :
  
+```
 wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
 wpa_cli
 remove_network 0
@@ -28,8 +29,9 @@ set_network 0 ssid "ap-name"
 set_network 0 psk "password"
 enable_network 0
 udhcpc -i wlan0
+```
 
 ## Test you connection
-'''
+```
 ping 8.8.8.8
-'''
+```
