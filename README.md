@@ -8,3 +8,28 @@ This file should be added to directory:
 The "**Makefile**" located in same directory should be modified to take into account this new DTS file.
 
 All the receipe for intergration are provided in this repository.
+
+# Testing
+
+Once your kernel is compiled these are useful command for testing:
+
+## To add/remove wf200 driver:
+ 
+modprobe -r wfx
+modprobe wfx
+ 
+## To connect to an AP :
+ 
+wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
+wpa_cli
+remove_network 0
+add_network
+set_network 0 ssid "ap-name"
+set_network 0 psk "password"
+enable_network 0
+udhcpc -i wlan0
+
+## Test you connection
+'''
+ping 8.8.8.8
+'''
