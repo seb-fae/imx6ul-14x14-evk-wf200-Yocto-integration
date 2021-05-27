@@ -11,13 +11,20 @@ All the receipe for intergration are provided in this repository.
 
 # Testing
 
-Once your kernel is compiled these are useful command for testing:
+Once your kernel is compiled these are useful commands for testing:
 
 ## To add/remove wf200 driver:
  
-modprobe -r wfx
+Load driver:
+```
 modprobe wfx
- 
+ ```
+
+Remove driver
+```
+modprobe -r wfx
+```
+
 ## To connect to an AP :
  
 ```
