@@ -13,7 +13,7 @@ All the receipe for intergration are provided in this repository.
 
 Once your kernel is compiled these are useful commands for testing:
 
-## To add/remove wf200 driver:
+## Add/remove wf200 driver:
  
 Load driver:
 ```
@@ -25,7 +25,7 @@ Remove driver
 modprobe -r wfx
 ```
 
-## To connect to an AP :
+## Connect to an Access Point :
  
 ```
 wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
