@@ -13,6 +13,12 @@ All the receipe for intergration are provided in this repository.
 
 ## Testing
 
+### Hardware connections
+
+The following picture shows used pins base on IMX eval kit schematic and DTS provided in this repository. SPI chip select (GPIO_2) can be routed on **ENET2_RXERR** if necessary.
+
+![Alt text](sch.jpg?raw=true "Optional Title")
+
 Once your kernel is compiled these are useful commands for testing:
 
 ### Add/remove wf200 driver:
