@@ -1,5 +1,7 @@
 # Yocto Integration
 
+## Build the kernel
+
 A device tree file integrating wf200 (SPI) on IMX EVK platform is provided as "**imx6ul-14x14-evk-wf200.dts**".
 
 This file should be added to directory:
@@ -9,11 +11,11 @@ The "**Makefile**" located in same directory should be modified to take into acc
 
 All the receipe for intergration are provided in this repository.
 
-# Testing
+## Testing
 
 Once your kernel is compiled these are useful commands for testing:
 
-## Add/remove wf200 driver:
+### Add/remove wf200 driver:
  
 Load driver:
 ```
@@ -25,7 +27,7 @@ Remove driver
 modprobe -r wfx
 ```
 
-## Connect to an Access Point :
+### Connect to an Access Point :
  
 ```
 wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
@@ -38,7 +40,7 @@ enable_network 0
 udhcpc -i wlan0
 ```
 
-## Test you connection
+### Test you connection
 ```
 ping 8.8.8.8
 ```
